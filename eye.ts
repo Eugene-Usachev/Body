@@ -1,3 +1,5 @@
+import {eye} from "../index";
+
 interface LogGroupStep {
     startTime: number;
     timer: number;
@@ -7,7 +9,7 @@ const newLogGroupStep = (eye: Eye, elem: {name: string}, groupName: string): Log
     return {
         startTime: Date.now(),
         timer: setTimeout(() => {
-            eye.warn(`Step "${elem.name}" from log group "${groupName}" is working after 2 seconds!`);
+            eye.warn(`Step ${JSON.stringify(elem.name)} from log group "${groupName}" is working after 2 seconds!`);
         }, 2000)
     }
 }
@@ -24,7 +26,6 @@ class LogGroup {
         this.name = name;
         this.message = message;
     };
-
 
     newStep(this, elem: {name: string}) {
         this.steps.set(elem.name, newLogGroupStep(this.eye, elem, this.name));
