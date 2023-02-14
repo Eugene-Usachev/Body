@@ -1,5 +1,3 @@
-import {eye} from "../index";
-
 interface LogGroupStep {
     startTime: number;
     timer: number;
